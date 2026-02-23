@@ -22,11 +22,30 @@
 // Ці функції допомагають зберігати та вивантажувати рядки в NVS, що використовується для збереження Wi-Fi даних
 // Функція для збереження рядка в NVS за ключем
 esp_err_t save_nvs_str(const char* key, const char* value) {
+    if (value == NULL || key == NULL) {
+        return ESP_ERR_INVALID_ARG;
+    }
+
+    // Валідація довжини відповідно до стандартів Wi-Fi (SSID макс 32, PASS макс 64)
+    size_t len = strlen(value);
+    if (strcmp(key, "wifi_ssid") == 0 && len > 32) {
+        printf("Помилка: SSID занадто довгий (макс 32 символи)!\n");
+        return ESP_ERR_INVALID_SIZE;
+    }
+    if (strcmp(key, "wifi_pass") == 0 && len > 64) {
+        printf("Помилка: Пароль занадто довгий (макс 64 символи)!\n");
+        return ESP_ERR_INVALID_SIZE;
+    }
+
     nvs_handle_t my_handle;
     esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
     if (err != ESP_OK) return err;
+
     err = nvs_set_str(my_handle, key, value);
-    if (err == ESP_OK) err = nvs_commit(my_handle);
+    if (err == ESP_OK) {
+        err = nvs_commit(my_handle);
+    }
+
     nvs_close(my_handle);
     return err;
 }
