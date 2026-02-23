@@ -18,6 +18,16 @@
 #include "lwip/err.h"            // For ESP_ERR_ codes
 #include "lwip/sys.h"            // For sys_msleep()
 
+// --- РЕЖИМ ТЕСТУВАННЯ ---
+// Розкоментуй рядок нижче, щоб запустити тести. Закоментуй для звичайної роботи.
+// #define ENABLE_UNIT_TESTS 
+
+#ifdef ENABLE_UNIT_TESTS
+    #include "unity.h"
+    // Оголошуємо тестові функції (які лежать у папці test)
+    extern void run_logic_tests(void); 
+#endif
+
 // --- NVS Helper Functions ---
 // Ці функції допомагають зберігати та вивантажувати рядки в NVS, що використовується для збереження Wi-Fi даних
 // Функція для збереження рядка в NVS за ключем
@@ -369,6 +379,15 @@ void app_main(void) {
     }
     ESP_ERROR_CHECK(ret);
 
+  #ifdef ENABLE_UNIT_TESTS
+    // --- ЗАПУСК ТЕСТІВ ---
+      printf(" Запуск Unit-тестів...\n");
+      vTaskDelay(pdMS_TO_TICKS(1000)); // Коротка пауза для ініціалізації консолі
+      run_logic_tests();
+      printf("Тестування завершено. Програма зупинена.\n");
+      while(1) { vTaskDelay(1000); } // Зупиняємо виконання після тестів
+  #else
+
     // Ініціалізуємо Wi-Fi стек один раз на старті, але не підключаємось
     wifi_init_basic(); 
 
@@ -390,4 +409,5 @@ void app_main(void) {
     } else {
         printf("\nWi-Fi не налаштовано. Введіть 'scan' або 'set_wifi'.\n");
     }
+  #endif   
 }
