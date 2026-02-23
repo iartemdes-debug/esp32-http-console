@@ -1,0 +1,32 @@
+# --- ESP-IDF Specific ---
+build/
+sdkconfig
+sdkconfig.old
+sdkconfig.temp
+managed_components/
+dependencies.lock
+
+# --- VS Code & IDEs ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+.vscode/ipch/
+.history/
+*.code-workspace
+
+# --- Python & Compilation Cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+.cache/
+
+# --- System & Logs ---
+*.log
+.DS_Store
+Thumbs.db
+
+# --- Temporary Files ---
+*~
+*.swp
+*.tmp
