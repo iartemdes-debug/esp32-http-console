@@ -19,7 +19,7 @@ void tearDown(void) {
 
 // ТЕСТ 1: Перевірка збереження та зчитування SSID
 void test_nvs_save_load_wifi_credentials(void) {
-    const char* test_ssid = "Geniy_Router";
+    const char* test_ssid = "MyRouter";
     const char* test_pass = "password123";
     char loaded_ssid[33] = {0};
     char loaded_pass[64] = {0};
@@ -50,7 +50,7 @@ void test_wifi_ssid_length_validation(void) {
     TEST_ASSERT_NOT_EQUAL(ESP_OK, err);
 }
 
-void app_main(void) {
+void run_logic_tests(void) {
     UNITY_BEGIN();
     RUN_TEST(test_nvs_save_load_wifi_credentials);
     RUN_TEST(test_nvs_non_existent_key);
