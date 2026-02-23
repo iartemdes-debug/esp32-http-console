@@ -39,7 +39,7 @@
 
 
 ## 🏗 Як зібрати проєкт (Windows 11)
-1. Вимоги: Встановлений  Phyton3.13, Git, ESP-IDF v5.x та VS Code (з встановленим розширенням ESP-IDF).
+1. Вимоги: Встановлений  [Phyton3.13](https://www.python.org/downloads/release/python-31312/), [Git](https://git-scm.com/install/windows), [ESP-IDF v5.5.3 з коміляторами](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/windows-setup.html#get-started-windows-first-steps) та [VS Code](https://code.visualstudio.com/docs/?dv=win64user). Встановити розширенням ESP-IDF для VS Code (для цього треба відкрити VS Code перейти у вкладку Extensions і вній знайти ESP-IDF).
 
 2. Клонування:
 ```Bash
