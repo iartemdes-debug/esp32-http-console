@@ -1,6 +1,6 @@
 # ESP32 HTTP Console
 
-![ESP-IDF Version](https://img.shields.io/badge/ESP--IDF-v5.x-blue?style=for-the-badge&logo=espressif)
+![ESP-IDF Version](https://img.shields.io/badge/ESP--IDF-v5.5.3-blue?style=for-the-badge&logo=espressif)
 ![Platform](https://img.shields.io/badge/Platform-ESP32-red?style=for-the-badge&logo=espressif)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Test-orange?style=for-the-badge)
